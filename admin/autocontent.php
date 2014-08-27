@@ -15,10 +15,14 @@ if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
 
+$document = JFactory::getDocument();
+$document->addStyleSheet(rtrim(JUri::base(), ',') . '/components/com_autocontent/assets/css/autocontent.css');
+
 /* Permission checking */
 if (!JFactory::getUser()->authorise('core.manage', 'com_ztautolinks')) {
     return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
+
 /* Register tables directory */
 JTable::addIncludePath(__DIR__ . '/tables');
 require_once( dirname(__FILE__) . '/libraries/vendor/simplepie/autoloader.php');

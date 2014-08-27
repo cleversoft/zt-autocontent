@@ -97,7 +97,7 @@ class AutoContentModelUrls extends JModelList {
         return $row;
     }
 
-    function delete($cid) {
+    public function delete($cid) {
         $db = JFactory::getDBO();
         $query = $db->getQuery(true);
 
@@ -117,7 +117,7 @@ class AutoContentModelUrls extends JModelList {
         return true;
     }
 
-    function publish($cid, $value) {
+    public function publish($cid, $value) {
         $db = JFactory::getDBO();
         $query = $db->getQuery(true);
 
@@ -138,7 +138,7 @@ class AutoContentModelUrls extends JModelList {
         return true;
     }
 
-    function k2_is_duplicate($title) {
+    public function k2_is_duplicate($title) {
         $db = JFactory::getDBO();
         $query = "SELECT COUNT(*) FROM #__k2_items WHERE title = " . $db->Quote($title) . "";
         $db->setQuery($query);
@@ -147,7 +147,7 @@ class AutoContentModelUrls extends JModelList {
         return ($count) ? true : false;
     }
 
-    function content_is_duplicate($title) {
+    public function content_is_duplicate($title) {
         $db = JFactory::getDBO();
         $query = "SELECT COUNT(*) FROM #__content WHERE title = " . $db->Quote($title) . "";
         $db->setQuery($query);
@@ -156,7 +156,7 @@ class AutoContentModelUrls extends JModelList {
         return ($count) ? true : false;
     }
 
-    function get_file($url) {
+    public function get_file($url) {
         if (ini_get('allow_url_fopen') != 1) {
             @ini_set('allow_url_fopen', '1');
         }
@@ -177,7 +177,7 @@ class AutoContentModelUrls extends JModelList {
         return false;
     }
 
-    function convert_to_utf8($html, $header = null) {
+    public function convert_to_utf8($html, $header = null) {
         $accept = array(
             'type' => array('application/rss+xml', 'application/xml', 'application/rdf+xml', 'text/xml', 'text/html'),
             'charset' => array_diff(mb_list_encodings(), array('pass', 'auto', 'wchar', 'byte2be', 'byte2le', 'byte4be', 'byte4le', 'BASE64', 'UUENCODE', 'HTML-ENTITIES', 'Quoted-Printable', '7bit', '8bit'))
@@ -255,7 +255,7 @@ class AutoContentModelUrls extends JModelList {
         return $html;
     }
 
-    function full_feed($permalink, $regArray) {
+    public function full_feed($permalink, $regArray) {
         if ($permalink && $html = $this->get_file($permalink)) {
             $html = $this->convert_to_utf8($html);
             $content = grabArticleHtml($html, $regArray);
@@ -271,7 +271,7 @@ class AutoContentModelUrls extends JModelList {
         return $content;
     }
 
-    function getTitle($permalink) {
+    public function getTitle($permalink) {
         if ($permalink && $html = $this->get_file($permalink)) {
             $html = $this->convert_to_utf8($html);
             $title = getArticleTitle($html);
@@ -282,7 +282,7 @@ class AutoContentModelUrls extends JModelList {
         return $title;
     }
 
-    function title_fix($title) {
+    public function title_fix($title) {
         if ($title && strpos($title, ' - ')) {
             $backup = $title;
             $backup = preg_replace('/([-])/', '$1[D]', $backup);
@@ -298,7 +298,7 @@ class AutoContentModelUrls extends JModelList {
         return $title;
     }
 
-    function content_fix($text, $feed) {
+    public function content_fix($text, $feed) {
         $is_remove = $feed->remove_tag;
         $allow_tags = $feed->allow_tags;
         $allow_tags = str_replace("/", "", $allow_tags);
@@ -364,7 +364,7 @@ class AutoContentModelUrls extends JModelList {
         return $text;
     }
 
-    function parse_images($content, $link, $feed) {
+    public function parse_images($content, $link, $feed) {
         preg_match_all('/<img(.+?)src=\"(.+?)\"(.*?)>/', $content, $images);
         $urls = $images[2];
 
@@ -391,7 +391,7 @@ class AutoContentModelUrls extends JModelList {
         return $content;
     }
 
-    function cache_image($url, $feed) {
+    public function cache_image($url, $feed) {
         if (strpos($url, "icon_") !== FALSE)
             return false;
 
@@ -428,7 +428,7 @@ class AutoContentModelUrls extends JModelList {
         return false;
     }
 
-    function replaceText($text, $feed) {
+    public function replaceText($text, $feed) {
         $strings = $feed->replace_texts;
 
         if ($strings != NULL && $strings != "") {
@@ -443,7 +443,7 @@ class AutoContentModelUrls extends JModelList {
         return $text;
     }
 
-    function splitIntroDesc($ohtml) {
+    public function splitIntroDesc($ohtml) {
         $document = new DOMDocument();
         $desciption = array();
         $headTag = array('p', 'h2', 'h3', 'span');
@@ -470,7 +470,7 @@ class AutoContentModelUrls extends JModelList {
         return $desciption;
     }
 
-    function processData($url, $feed) {
+    public function processData($url, $feed) {
         //Log
         $text = "<b>-----------Processing feed: " . $feed->feed_name . " (" . $url . ")" . "------------</b>";
         $this->writeLog($text);
@@ -550,7 +550,7 @@ class AutoContentModelUrls extends JModelList {
             $this->processContentData($title, $introtext, $content, $feed);
     }
 
-    function creatAlias($title, $feed) {
+    public function creatAlias($title, $feed) {
         jimport('joomla.filter.output');
         mb_internal_encoding("UTF-8");
         mb_regex_encoding("UTF-8");
@@ -593,7 +593,7 @@ class AutoContentModelUrls extends JModelList {
         return $alias;
     }
 
-    function processK2Data($title, $introtext, $content, $feed) {
+    public function processK2Data($title, $introtext, $content, $feed) {
         $db = JFactory::getDBO();
         $user = &JFactory::getUser();
         $post = array();
@@ -636,7 +636,7 @@ class AutoContentModelUrls extends JModelList {
         return true;
     }
 
-    function processContentData($title, $introtext, $content, $feed) {
+    public function processContentData($title, $introtext, $content, $feed) {
         $db = JFactory::getDBO();
         $user = &JFactory::getUser();
         $post = array();
@@ -678,7 +678,7 @@ class AutoContentModelUrls extends JModelList {
         return true;
     }
 
-    function writeLog($text) {
+    public function writeLog($text) {
         $db = JFactory::getDBO();
         $user = &JFactory::getUser();
         $post = array();
@@ -699,7 +699,7 @@ class AutoContentModelUrls extends JModelList {
         return true;
     }
 
-    function getAllFeeds() {
+    public function getAllFeeds() {
         $db = JFactory::getDBO();
 
         $query = $db->getQuery(true);

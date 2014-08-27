@@ -1,21 +1,30 @@
 <?php
 
-// No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+/**
+ * Zt Autocontent
+ * @package Joomla.Component
+ * @subpackage com_autocontent
+ * @version 0.5.0
+ *
+ * @copyright   Copyright (c) 2013 APL Solutions (http://apl.vn)
+ *
+ */
+defined('_JEXEC') or die;
 
 /**
  * Script file of HelloWorld component
+ * @link http://docs.joomla.org/J2.5:Developing_a_MVC_Component/Adding_an_install-uninstall-update_script_file
  */
 class com_autocontentInstallerScript {
 
     /**
      * method to install the component
-     *
-     * @return void
+     * @param type $parent
      */
     function install($parent) {
         // $parent is the class calling this method
-        $parent->getParent()->setRedirectURL('index.php?option=com_autocontent');
+        /* No need redirect to component page after installed */
+        //$parent->getParent()->setRedirectURL('index.php?option=com_autocontent');
     }
 
     /**
@@ -25,7 +34,7 @@ class com_autocontentInstallerScript {
      */
     function uninstall($parent) {
         // $parent is the class calling this method
-        echo '<p>' . JText::_('COM_AUTOCONTENT_UNINSTALL_TEXT') . '</p>';
+        //echo '<p>' . JText::_('COM_AUTOCONTENT_UNINSTALL_TEXT') . '</p>';
     }
 
     /**
@@ -35,7 +44,7 @@ class com_autocontentInstallerScript {
      */
     function update($parent) {
         // $parent is the class calling this method
-        echo '<p>' . JText::_('COM_AUTOCONTENT_UPDATE_TEXT') . '</p>';
+        //echo '<p>' . JText::_('COM_AUTOCONTENT_UPDATE_TEXT') . '</p>';
     }
 
     /**
@@ -46,7 +55,7 @@ class com_autocontentInstallerScript {
     function preflight($type, $parent) {
         // $parent is the class calling this method
         // $type is the type of change (install, update or discover_install)
-        echo '<p>' . JText::_('COM_AUTOCONTENT_PREFLIGHT_' . $type . '_TEXT') . '</p>';
+        //echo '<p>' . JText::_('COM_AUTOCONTENT_PREFLIGHT_' . $type . '_TEXT') . '</p>';
     }
 
     /**
@@ -57,7 +66,7 @@ class com_autocontentInstallerScript {
     function postflight($type, $parent) {
         // $parent is the class calling this method
         // $type is the type of change (install, update or discover_install)
-        echo '<p>' . JText::_('COM_AUTOCONTENT_POSTFLIGHT_' . $type . '_TEXT') . '</p>';
+        //echo '<p>' . JText::_('COM_AUTOCONTENT_POSTFLIGHT_' . $type . '_TEXT') . '</p>';
     }
 
 }

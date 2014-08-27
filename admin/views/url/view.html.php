@@ -1,7 +1,15 @@
 <?php
 
-// No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+/**
+ * Zt Autocontent
+ * @package Joomla.Component
+ * @subpackage com_autocontent
+ * @version 0.5.0
+ *
+ * @copyright   Copyright (c) 2013 APL Solutions (http://apl.vn)
+ *
+ */
+defined('_JEXEC') or die;
 
 // import Joomla view library
 jimport('joomla.application.component.view');

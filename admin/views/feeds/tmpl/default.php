@@ -23,14 +23,14 @@ $type[] = JHtml::_('select.option', 'content', JText::_('JOPTION_SELECT_FEED_TYP
         <div class="js-stools clearfix">
             <div class="clearfix">
                 <fieldset id="filter-bar" style="height:auto;">
-                    <div class="filter-search fltlft js-stools-container-bar">
+                    <div class="filter-search fltlft js-stools-container-bar clearfix">
                         <label class="filter-search-lbl" for="filter_search"><?php echo JText::_('COM_AUTOCONTENT_FEEDS_SEARCH'); ?>: </label>
-                        <input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo JText::_('COM_AUTOCONTENT_FEEDS_SEARCH'); ?>" />
-                        <button type="submit"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
-                        <button type="button" onclick="document.id('filter_search').value = '';
+                        <input type="text" class="pull-left" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo JText::_('COM_AUTOCONTENT_FEEDS_SEARCH'); ?>" />
+                        <button type="submit" class="btn btn-small btn-success zt-btn-submit pull-left"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+                        <button type="button" class="btn btn-small zt-btn-reset" onclick="document.id('filter_search').value = '';
                                 this.form.submit();"><?php echo JText::_('JSEARCH_RESET'); ?></button>
                     </div>
-                    <div class="filter-select fltrt js-stools-container-list hidden-phone hidden-tablet shown">
+                    <div class="filter-select fltrt js-stools-container-list hidden-phone hidden-tablet shown clearfix">
                         <label for="filter_state">
                             <?php echo JText::_('COM_AUTOCONTENT_FEEDS_CATEGORY'); ?>
                         </label>

@@ -79,7 +79,7 @@ class AutoContentModelLogs extends JModelList {
         return $query;
     }
 
-    function delete($cid) {
+    public function delete($cid) {
         $db = JFactory::getDBO();
         $query = $db->getQuery(true);
 
@@ -99,7 +99,7 @@ class AutoContentModelLogs extends JModelList {
         return true;
     }
 
-    function clear() {
+    public function clear() {
         $db = JFactory::getDBO();
         $query = "TRUNCATE TABLE #__autocontent_log";
 

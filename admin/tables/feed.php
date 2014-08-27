@@ -58,6 +58,11 @@ class AutoContentTableFeed extends JTable {
         if (!$this->author_id) {
             $this->author_id = $user->get('id');
         }
+        /* URL validation */
+        if (!filter_var($this->feed_url, FILTER_VALIDATE_URL)) {
+            JFactory::getApplication()->enqueueMessage(JText::_('COM_AUTOCONTENT_INVALID_URL'), 'warning');
+            return false;
+        }
         return true;
     }
 

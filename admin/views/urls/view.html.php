@@ -1,7 +1,15 @@
 <?php
 
-// No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+/**
+ * Zt Autocontent
+ * @package Joomla.Component
+ * @subpackage com_autocontent
+ * @version 0.5.0
+ *
+ * @copyright   Copyright (c) 2013 APL Solutions (http://apl.vn)
+ *
+ */
+defined('_JEXEC') or die;
 
 // import Joomla view library
 jimport('joomla.application.component.view');
@@ -15,7 +23,7 @@ class AutoContentViewUrls extends JViewLegacy {
      * AutoContents view display method
      * @return void
      */
-    function display($tpl = null) {
+    public function display($tpl = null) {
         // Get data from the model
         $items = $this->get('Items');
         $pagination = $this->get('Pagination');
