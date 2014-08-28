@@ -7,7 +7,7 @@ defined('_JEXEC') or die('Restricted Access');
         <?php echo JText::_('COM_AUTOCONTENT_FEED_HEADING_ID'); ?>
     </th>
     <th width="20">
-        <?php echo JHtml::_('grid.checkall'); ?>
+        <input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
     </th>			
     <th>
         <?php echo JText::_('COM_AUTOCONTENT_FEED_FIELD_FEED_NAME_LABEL'); ?>
