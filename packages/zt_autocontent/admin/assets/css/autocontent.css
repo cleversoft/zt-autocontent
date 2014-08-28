@@ -1,0 +1,60 @@
+/* ======================================
+/// General
+======================================= */
+
+body{ /*Style Body*/ }
+.width-50{
+    width: auto !important;
+}
+ul.adminformlist{
+    margin: 0;
+}
+li{
+    list-style: none;
+}
+.adminformlist input[type="text"],
+.adminformlist input[type="password"],
+.adminformlist input[type="date"],
+.adminformlist select,
+.adminformlist textarea,
+#filter-bar input[type="text"],
+#filter-bar select{
+    border-radius: 3px;
+    box-shadow: 0 0 3px 0 #ccc inset;
+    box-sizing: border-box;
+    height: 35px;
+    padding: 0 10px;
+    width: 330px;
+}
+.adminformlist textarea{
+    height: auto;
+}
+.adminformlist .input-append input[type="text"]{
+    width: 293px;
+}
+.adminformlist .input-append button{
+    height: 35px;
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 0 3px 0 #ccc inset;
+}
+.adminformlist .input-append a.btn{
+    height: 20px;
+    border: none;
+    height: 27px;
+    line-height: 27px;
+}
+
+/* =======================================
+/// FORM AND FIELD
+=========================================*/
+#filter-bar.js-stools{
+    height: auto;
+}
+
+/* =====================================
+/// BUTTON DEFAULT
+=======================================*/
+.zt-btn-submit, .zt-btn-reset{
+    height: 35px;
+    margin-left: 5px;
+}
