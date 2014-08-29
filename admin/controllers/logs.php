@@ -11,10 +11,11 @@
  */
 defined('_JEXEC') or die;
 
-// import Joomla controlleradmin library
-jimport('joomla.application.component.controlleradmin');
-
+/**
+ * Class exists checking
+ */
 if (!class_exists('AutoContentControllerLogs')) {
+    jimport('joomla.application.component.controlleradmin');
 
     /**
      * Logs Controller
@@ -33,6 +34,9 @@ if (!class_exists('AutoContentControllerLogs')) {
             return $model;
         }
 
+        /**
+         * 
+         */
         public function clear() {
             $model = $this->getModel();
             $model->clear();

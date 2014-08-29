@@ -3,14 +3,14 @@
  
 	<name>COM_AUTOCONTENT</name>
 	<!-- The following elements are optional and free of formatting conttraints -->
-	<creationDate>February 13, 2012</creationDate>
+	<creationDate>August 28, 2014</creationDate>
 	<author>ZooTemplate.com</author>
 	<authorEmail>support@zootemplate.com</authorEmail>
 	<authorUrl>http://www.ZooTemplate.com</authorUrl>
 	<copyright>ZooTemplate.com</copyright>
 	<license>ZooTemplate.com</license>
 	<!--  The version string is recorded in the components table -->
-	<version>1.0</version>
+	<version>0.5.0</version>
 	<!-- The description is optional and defaults to the name -->
 	<description>COM_AUTOCONTENT_DESCRIPTION</description>
  
@@ -40,7 +40,7 @@
 		<filename>index.html</filename>
 		<folder>images</folder>
 	</media>
- 
+
 	<administration>
 		<!-- Administration Menu Section -->
 		<menu img="../media/com_autocontent/images/tux-16x16.png">COM_AUTOCONTENT_MENU</menu>
@@ -68,12 +68,14 @@
 			<!-- helpers files section -->
 			<folder>helpers</folder>
 			<folder>libraries</folder>
+			<folder>assets</folder>
 		</files>
  
-		<languages folder="admin">
-			<language tag="en-GB">language/en-GB/en-GB.com_autocontent.ini</language>
-			<language tag="en-GB">language/en-GB/en-GB.com_autocontent.sys.ini</language>
+		<languages folder="admin/language/en-GB">
+			<language tag="en-GB">en-GB.com_autocontent.ini</language>
+			<language tag="en-GB">en-GB.com_autocontent.sys.ini</language>
 		</languages>
+		
 	</administration>
  
 	<!-- UPDATESERVER DEFINITION -->

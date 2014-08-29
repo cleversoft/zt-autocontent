@@ -1,13 +1,21 @@
 <?php
-// No direct access
-defined('_JEXEC') or die('Restricted access');
+/**
+ * Zt Autocontent
+ * @package Joomla.Component
+ * @subpackage com_autocontent
+ * @version 0.5.0
+ *
+ * @copyright   Copyright (c) 2013 APL Solutions (http://apl.vn)
+ *
+ */
+defined('_JEXEC') or die;
 
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 $params = $this->form->getFieldsets('params');
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_autocontent&view=url&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
-    <div class="width-50 fltlft">
+<form action="<?php echo JRoute::_('index.php?option=com_autocontent&view=url&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-default">
+    <div class="w-50 fltlft">
         <fieldset class="adminform">
             <legend><?php echo JText::_('COM_AUTOCONTENT_URL_DETAILS'); ?></legend>
             <ul class="adminformlist">
@@ -21,7 +29,7 @@ $params = $this->form->getFieldsets('params');
         </fieldset>
     </div>
 
-    <div class="width-50 fltrt">
+    <div class="w-50 w-col-2 fltrt">
         <fieldset class="adminform">
             <legend><?php echo JText::_('COM_AUTOCONTENT_URL_CATEGORY'); ?></legend>
             <ul class="adminformlist">

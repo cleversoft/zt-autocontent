@@ -11,6 +11,9 @@
  */
 defined('_JEXEC') or die;
 
+/**
+ * Class exists checking
+ */
 if (!class_exists('AutoContelControllerUrl')) {
     jimport('joomla.application.component.controllerform');
 

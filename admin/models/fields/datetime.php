@@ -11,32 +11,37 @@
  */
 defined('_JEXEC') or die;
 
-// import the list field type
-jimport('joomla.form.helper');
-JFormHelper::loadFieldClass('list');
-
 /**
- * HelloWorld Form Field class for the HelloWorld component
+ * Class exists checking
  */
-class JFormFieldDateTime extends JFormFieldList {
+if (!class_exists('JFormFieldDateTime')) {
+    jimport('joomla.form.helper');
+    JFormHelper::loadFieldClass('list');
 
     /**
-     * The field type.
-     *
-     * @var		string
+     * HelloWorld Form Field class for the HelloWorld component
      */
-    protected $type = 'DateTime';
+    class JFormFieldDateTime extends JFormFieldList {
 
-    /**
-     * Method to get a list of options for a list input.
-     *
-     * @return	array		An array of JHtml options.
-     */
-    protected function getInput() {
-        $date = JFactory::getDate();
-        $this->value = ($this->value != '0000-00-00 00:00:00') ? $this->value : '';
+        /**
+         * The field type.
+         *
+         * @var		string
+         */
+        protected $type = 'DateTime';
 
-        return JHTML::_('calendar', $this->value, $this->name, $this->name, '%Y-%m-%d');
+        /**
+         * Method to get a list of options for a list input.
+         *
+         * @return	array		An array of JHtml options.
+         */
+        protected function getInput() {
+            $date = JFactory::getDate();
+            $this->value = ($this->value != '0000-00-00 00:00:00') ? $this->value : '';
+
+            return JHTML::_('calendar', $this->value, $this->name, $this->name, '%Y-%m-%d');
+        }
+
     }
 
 }

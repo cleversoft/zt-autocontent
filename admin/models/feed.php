@@ -12,7 +12,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Class exists
+ * Class exists checking
  */
 if (!class_exists('AutoContentModelFeed')) {
     jimport('joomla.application.component.modeladmin');

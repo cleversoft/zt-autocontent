@@ -14,8 +14,8 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 $params = $this->form->getFieldsets('params');
 ?>
-<form action="index.php?option=com_autocontent&layout=edit&id=<?php echo (int) $this->item->id; ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
-    <div class="width-50 fltlft">
+<form action="index.php?option=com_autocontent&layout=edit&id=<?php echo (int) $this->item->id; ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-default">
+    <div class="w-50 fltlft">
         <fieldset class="adminform">
             <legend><?php echo JText::_('COM_AUTOCONTENT_FEED_DETAILS'); ?></legend>
             <ul class="adminformlist">
@@ -30,7 +30,7 @@ $params = $this->form->getFieldsets('params');
         </fieldset>
     </div>
 
-    <div class="width-50 fltrt">
+    <div class="w-50 w-col-2 fltrt">
         <fieldset class="adminform">
             <legend><?php echo JText::_('COM_AUTOCONTENT_FEED_CATEGORY'); ?></legend>
             <ul class="adminformlist">
@@ -66,7 +66,7 @@ $params = $this->form->getFieldsets('params');
                         <?php } ?>
                 <?php endforeach; ?>
             </ul>
-        </fieldset>		
+        </fieldset>
     </div>
 
     <div>

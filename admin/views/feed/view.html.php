@@ -11,6 +11,9 @@
  */
 defined('_JEXEC') or die;
 
+/**
+ * Class exists checking
+ */
 if (!class_exists('AutoContentViewFeed')) {
     jimport('joomla.application.component.view');
 

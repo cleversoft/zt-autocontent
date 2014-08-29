@@ -11,21 +11,26 @@
  */
 defined('_JEXEC') or die;
 
-// import Joomla table library
-jimport('joomla.database.table');
-
 /**
- * Feed Table class
+ * Class exists checking
  */
-class AutoContentTableLog extends JTable {
+if (!class_exists('AutoContentTableLog')) {
+    jimport('joomla.database.table');
 
     /**
-     * Constructor
-     *
-     * @param object Database connector object
+     * Feed Table class
      */
-    public function __construct(&$db) {
-        parent::__construct('#__autocontent_log', 'id', $db);
+    class AutoContentTableLog extends JTable {
+
+        /**
+         * Constructor
+         *
+         * @param object Database connector object
+         */
+        function __construct(&$db) {
+            parent::__construct('#__autocontent_log', 'id', $db);
+        }
+
     }
 
 }

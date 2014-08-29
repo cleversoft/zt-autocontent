@@ -11,80 +11,86 @@
  */
 defined('_JEXEC') or die;
 
-// import Joomla view library
-jimport('joomla.application.component.view');
-
 /**
- * Feeds View
+ * Class exists checking
  */
-class AutoContentViewUrls extends JViewLegacy {
+if (!class_exists('AutoContentViewUrls')) {
+    jimport('joomla.application.component.view');
 
     /**
-     * AutoContents view display method
-     * @return void
+     * Feeds View
      */
-    public function display($tpl = null) {
-        // Get data from the model
-        $items = $this->get('Items');
-        $pagination = $this->get('Pagination');
-        $state = $this->get('State');
+    class AutoContentViewUrls extends JViewLegacy {
 
-        // Check for errors.
-        if (count($errors = $this->get('Errors'))) {
-            JError::raiseError(500, implode('<br />', $errors));
-            return false;
+        /**
+         * AutoContents view display method
+         * @return void
+         */
+        function display($tpl = null) {
+            // Get data from the model
+            $items = $this->get('Items');
+            $pagination = $this->get('Pagination');
+            $state = $this->get('State');
+
+            // Check for errors.
+            if (count($errors = $this->get('Errors'))) {
+                JError::raiseError(500, implode('<br />', $errors));
+                return false;
+            }
+
+            // Assign data to the view
+            $this->items = $items;
+            $this->pagination = $pagination;
+            $this->state = $state;
+
+            // Set the toolbar
+            $this->addToolBar();
+
+            // Set the submenu
+            AutoContentHelper::addSubmenu('urls');
+
+            // Display the template
+            parent::display($tpl);
+
+            // Set the document
+            $this->setDocument();
         }
 
-        // Assign data to the view
-        $this->items = $items;
-        $this->pagination = $pagination;
-        $this->state = $state;
+        /**
+         * Setting the toolbar
+         */
+        protected function addToolBar() {
+            $canDo = AutoContentHelper::getActions();
+            JToolBarHelper::title(JText::_('COM_AUTOCONTENT_SUBMENU_URLS'), 'weblinks-categories.png');
+            if ($canDo->get('core.create')) {
+                JToolBarHelper::addNew('url.add', 'JTOOLBAR_NEW');
+            }
 
-        // Set the toolbar
-        $this->addToolBar();
+            JToolBarHelper::custom('url.load', 'purge.png', 'purge.png', 'COM_AUTOCONTENT_LOAD_URLS');
 
-        // Set the submenu
-        AutoContentHelper::addSubmenu('urls');
-
-        // Display the template
-        parent::display($tpl);
-
-        // Set the document
-        $this->setDocument();
-    }
-
-    /**
-     * Setting the toolbar
-     */
-    protected function addToolBar() {
-        $canDo = AutoContentHelper::getActions();
-        JToolBarHelper::title(JText::_('COM_AUTOCONTENT_SUBMENU_URLS'), 'weblinks-categories.png');
-        if ($canDo->get('core.create')) {
-            JToolBarHelper::addNew('url.add', 'JTOOLBAR_NEW');
+            if ($canDo->get('core.edit')) {
+                JToolBarHelper::editList('url.edit', 'JTOOLBAR_EDIT');
+            }
+            if ($canDo->get('core.delete')) {
+                JToolBarHelper::deleteList('', 'urls.delete', 'JTOOLBAR_DELETE');
+            }
+            if ($canDo->get('core.admin')) {
+                JToolBarHelper::divider();
+                JToolBarHelper::preferences('com_autocontent');
+            }
         }
 
-        JToolBarHelper::custom('url.load', 'purge.png', 'purge.png', 'COM_AUTOCONTENT_LOAD_URLS');
+        /**
+         * Method to set up the document properties
+         *
+         * @return void
+         */
+        protected function setDocument() {
+            $document = JFactory::getDocument();
+            $document->setTitle(JText::_('COM_AUTOCONTENT_ADMINISTRATION'));
+        }
 
-        if ($canDo->get('core.edit')) {
-            JToolBarHelper::editList('url.edit', 'JTOOLBAR_EDIT');
-        }
-        if ($canDo->get('core.delete')) {
-            JToolBarHelper::deleteList('', 'urls.delete', 'JTOOLBAR_DELETE');
-        }
-        if ($canDo->get('core.admin')) {
-            JToolBarHelper::divider();
-            JToolBarHelper::preferences('com_autocontent');
-        }
-    }
-
-    /**
-     * Method to set up the document properties
-     *
-     * @return void
-     */
-    protected function setDocument() {
-        $document = JFactory::getDocument();
-        $document->setTitle(JText::_('COM_AUTOCONTENT_ADMINISTRATION'));
     }
 
 }
+

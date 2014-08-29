@@ -12,62 +12,69 @@
 defined('_JEXEC') or die;
 
 /**
- * Feeds View
+ * Class exists checking
  */
-class AutoContentViewFeeds extends JViewLegacy {
+if (!class_exists('AutoContentViewFeeds')) {
 
     /**
-     * AutoContents view display method
-     * @return void
+     * Feeds View
      */
-    public function display($tpl = null) {
-        /* Get model data */
-        $this->items = $this->get('Items');
-        $this->pagination = $this->get('Pagination');
-        $this->state = $this->get('State');
+    class AutoContentViewFeeds extends JViewLegacy {
 
-        if (count($errors = $this->get('Errors'))) {
-            JError::raiseError(500, implode('<br />', $errors));
-            return false;
+        /**
+         * AutoContents view display method
+         * @return void
+         */
+        public function display($tpl = null) {
+            /* Get model data */
+            $this->items = $this->get('Items');
+            $this->pagination = $this->get('Pagination');
+            $this->state = $this->get('State');
+
+            if (count($errors = $this->get('Errors'))) {
+                JError::raiseError(500, implode('<br />', $errors));
+                return false;
+            }
+
+            // Set the submenu
+            AutoContentHelper::addSubmenu('feeds');
+            $this->_addToolBar();
+            $this->_setDocument();
+
+            parent::display($tpl);
         }
 
-        // Set the submenu
-        AutoContentHelper::addSubmenu('feeds');
-        $this->_addToolBar();
-        $this->_setDocument();
+        /**
+         * Setting the toolbar
+         */
+        protected function _addToolBar() {
+            $canDo = AutoContentHelper::getActions();
+            JToolBarHelper::title(JText::_('COM_AUTOCONTENT_MANAGER_FEEDS'), 'newsfeeds-cat.png');
+            if ($canDo->get('core.create')) {
+                JToolBarHelper::addNew('feed.add', 'JTOOLBAR_NEW');
+            }
 
-        parent::display($tpl);
-    }
+            JToolBarHelper::custom('feed.load', 'purge.png', 'purge.png', 'COM_AUTOCONTENT_LOAD_FEEDS');
 
-    /**
-     * Setting the toolbar
-     */
-    protected function _addToolBar() {
-        $canDo = AutoContentHelper::getActions();
-        JToolBarHelper::title(JText::_('COM_AUTOCONTENT_MANAGER_FEEDS'), 'newsfeeds-cat.png');
-        if ($canDo->get('core.create')) {
-            JToolBarHelper::addNew('feed.add', 'JTOOLBAR_NEW');
+            if ($canDo->get('core.delete')) {
+                JToolBarHelper::deleteList('', 'feeds.delete', 'JTOOLBAR_DELETE');
+            }
+            if ($canDo->get('core.admin')) {
+                JToolBarHelper::divider();
+                JToolBarHelper::preferences('com_autocontent');
+            }
         }
 
-        JToolBarHelper::custom('feed.load', 'purge.png', 'purge.png', 'COM_AUTOCONTENT_LOAD_FEEDS');
-
-        if ($canDo->get('core.delete')) {
-            JToolBarHelper::deleteList('', 'feeds.delete', 'JTOOLBAR_DELETE');
+        /**
+         * Method to set up the document properties
+         *
+         * @return void
+         */
+        protected function _setDocument() {
+            $document = JFactory::getDocument();
+            $document->setTitle(JText::_('COM_AUTOCONTENT_ADMINISTRATION'));
         }
-        if ($canDo->get('core.admin')) {
-            JToolBarHelper::divider();
-            JToolBarHelper::preferences('com_autocontent');
-        }
-    }
 
-    /**
-     * Method to set up the document properties
-     *
-     * @return void
-     */
-    protected function _setDocument() {
-        $document = JFactory::getDocument();
-        $document->setTitle(JText::_('COM_AUTOCONTENT_ADMINISTRATION'));
     }
 
 }

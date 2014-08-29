@@ -3,6 +3,9 @@
 ======================================= */
 
 body{ /*Style Body*/ }
+*{
+    box-sizing: border-box;
+}
 .width-50{
     width: auto !important;
 }
@@ -11,6 +14,20 @@ ul.adminformlist{
 }
 li{
     list-style: none;
+}
+ul.adminformlist li{
+    float: left;
+    clear: both;
+}
+.fLeft{
+    float: left;
+}
+.w-50{
+    width: 49%;
+    float: left;
+}
+.w-col-2{
+    margin-left: 2%;
 }
 .adminformlist input[type="text"],
 .adminformlist input[type="password"],
@@ -24,7 +41,7 @@ li{
     box-sizing: border-box;
     height: 35px;
     padding: 0 10px;
-    width: 330px;
+    width: 430px;
 }
 .adminformlist textarea{
     height: auto;
@@ -37,13 +54,34 @@ li{
     border-radius: 0 3px 3px 0;
     box-shadow: 0 0 3px 0 #ccc inset;
 }
-.adminformlist .input-append a.btn{
-    height: 20px;
-    border: none;
-    height: 27px;
-    line-height: 27px;
+.input-append a.btn, .input-append button.btn{
+    height: 35px;
+    line-height: 28px;
 }
-
+.form-default{
+    background-color: #e5e5e5;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    float: left;
+    margin-top: 30px;
+    padding: 15px;
+    width: 100%;
+}
+.form-default > div > fieldset{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+.form-default > div > fieldset legend{
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 1px 10px;
+    width: auto;
+    background-color: #fff;
+}
 /* =======================================
 /// FORM AND FIELD
 =========================================*/

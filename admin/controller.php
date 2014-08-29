@@ -3,7 +3,7 @@
 /**
  * Zt Autocontent
  * @package Joomla.Component
- * @subpackage com_autocontent
+ * @subpackage com_autolinks
  * @version 0.5.0
  *
  * @copyright   Copyright (c) 2013 APL Solutions (http://apl.vn)

@@ -1,6 +1,14 @@
 <?php
-// No direct access to this file
-defined('_JEXEC') or die('Restricted Access');
+/**
+ * Zt Autocontent
+ * @package Joomla.Component
+ * @subpackage com_autocontent
+ * @version 0.5.0
+ *
+ * @copyright   Copyright (c) 2013 APL Solutions (http://apl.vn)
+ *
+ */
+defined('_JEXEC') or die;
 ?>
 <tr>
     <th width="5">
