@@ -38,7 +38,7 @@ Found a bug or have a feature request? Feel free to open an issue via this link:
 
 ##Documents
 
-[http://docs.zootemplate.com/category/zo2](http://docs.zootemplate.com/)
+[http://docs.zootemplate.com/](http://docs.zootemplate.com/)
 
 ## All Questions
 
