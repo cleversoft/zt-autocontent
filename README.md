@@ -1,4 +1,4 @@
-ZT AutoContent is a joomla extension which can automatically fetch full text from multiple RSS feeds, HTML page contents and insert to joomla article (including K2 CKK). With this extension, your website will be automatically updated with the latest articles syndicated from other websites.
+[ZT AutoContent](http://www.zootemplate.com/joomla-extensions/zt-autocontent) is a joomla extension which can automatically fetch full text from multiple RSS feeds, HTML page contents and insert to joomla article (including K2 CKK). With this extension, your website will be automatically updated with the latest articles syndicated from other websites.
 
 ## Key Features
 
